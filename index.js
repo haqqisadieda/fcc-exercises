@@ -173,7 +173,14 @@ app.get('/api/users/:_id/logs', (req, res) => {
 
                 logData.save((err, data) => {
                     if (err) return console.error(err);
-                    if (from && !to) {
+                    if (!from && !to) {
+                        res.json({
+                            _id: idToCheck,
+                            username: data.username,
+                            count: data.count,
+                            log: loggedArray,
+                        });
+                    } else if (from && !to) {
                         res.json({
                             _id: idToCheck,
                             username: data.username,
