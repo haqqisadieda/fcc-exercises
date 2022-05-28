@@ -131,7 +131,7 @@ app.get('/api/users/:_id/logs', (req, res) => {
             username: data.username,
         };
         if (from !== undefined && to === undefined) {
-            query.date = { $gte: new Date(from).getDate() - 1 };
+            query.date = { $gte: new Date(from) };
         } else if (to !== undefined && from === undefined) {
             query.date = { $lte: new Date(to) };
         } else if (from !== undefined && to !== undefined) {
